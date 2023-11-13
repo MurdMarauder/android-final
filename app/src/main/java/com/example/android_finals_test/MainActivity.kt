@@ -30,11 +30,18 @@ class MainActivity : AppCompatActivity() {
         val db = Firebase.firestore
         val linearL = findViewById<LinearLayout>(R.id.linear)
         val logoutButton = findViewById<Button>(R.id.mainLogoutButton)
+        val addButton = findViewById<Button>(R.id.mainAddButton)
 
         logoutButton.setOnClickListener {
             Firebase.auth.signOut()
             val loginActivity = Intent(this, LoginActivity::class.java)
             startActivity(loginActivity)
+        }
+
+        addButton.setOnClickListener {
+            finish()
+            val productAddActivity = Intent(this, ProductAddActivity::class.java)
+            startActivity(productAddActivity)
         }
 
         db.collection(menuCollectionName)

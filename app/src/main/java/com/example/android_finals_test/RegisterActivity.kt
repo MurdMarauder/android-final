@@ -34,13 +34,13 @@ class RegisterActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             val userId = auth.currentUser?.uid
-                            val city = hashMapOf(
+                            val data = hashMapOf(
                                 "userId" to userId,
                                 "displayName" to displayName,
                             )
 
                             db.collection(userCollectionName).document()
-                                .set(city)
+                                .set(data)
                                 .addOnSuccessListener {
                                     Toast.makeText(
                                         baseContext,
