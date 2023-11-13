@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -17,17 +18,26 @@ import androidx.cardview.widget.CardView
 import androidx.core.view.marginTop
 import com.bumptech.glide.Glide
 import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 import com.google.firebase.firestore.firestore
 
 
 class MainActivity : AppCompatActivity() {
+    private val menuCollectionName = "collection-1"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val db = Firebase.firestore
         val linearL = findViewById<LinearLayout>(R.id.linear)
+        val logoutButton = findViewById<Button>(R.id.mainLogoutButton)
 
-        db.collection("collection-1")
+        logoutButton.setOnClickListener {
+            Firebase.auth.signOut()
+            val loginActivity = Intent(this, LoginActivity::class.java)
+            startActivity(loginActivity)
+        }
+
+        db.collection(menuCollectionName)
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
@@ -129,7 +139,6 @@ class MainActivity : AppCompatActivity() {
                     viewBtnTv.setTypeface(null, Typeface.BOLD)
 
                     viewBtnTv.setOnClickListener {
-                        Log.d("tagggg", title)
                         val productViewActivity = Intent(this, ProductViewActivity::class.java)
                         productViewActivity.putExtra("imageUrl", imageUrl)
                         productViewActivity.putExtra("title", title)
@@ -152,5 +161,16 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.w("zzzz", "Error getting documents.", exception)
             }
+    }
+
+    public override fun onStart() {
+        super.onStart()
+
+        val auth = Firebase.auth
+        val currentUser = auth.currentUser
+        if (currentUser == null) {
+            val loginActivity = Intent(this, LoginActivity::class.java)
+            startActivity(loginActivity)
+        }
     }
 }
