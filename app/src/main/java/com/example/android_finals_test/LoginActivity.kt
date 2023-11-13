@@ -57,18 +57,10 @@ class LoginActivity : AppCompatActivity() {
         }
 
         registerButton.setOnClickListener {
-
-        }
-
-    }
-
-    public override fun onResume() {
-        super.onResume()
-
-        val auth = Firebase.auth
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
             finish()
+            val registerActivity = Intent(this, RegisterActivity::class.java)
+            startActivity(registerActivity)
         }
+
     }
 }
