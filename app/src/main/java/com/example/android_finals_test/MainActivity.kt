@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity() {
                     )
                     priceTv.layoutParams = priceTvParams
 
-                    priceTv.text = (price)
+                    priceTv.text = "Php. " + (price)
                     priceTv.textSize = 18F
                     priceTv.textAlignment = TextView.TEXT_ALIGNMENT_TEXT_START
                     priceTv.setTypeface(null, Typeface.BOLD)
@@ -153,7 +153,7 @@ class MainActivity : AppCompatActivity() {
                         productViewActivity.putExtra("photoUrl", imageUrl)
                         productViewActivity.putExtra("name", title)
                         productViewActivity.putExtra("description", description)
-                        productViewActivity.putExtra("price", price)
+                        productViewActivity.putExtra("price", "Php. " + price)
                         startActivity(productViewActivity)
                     }
 

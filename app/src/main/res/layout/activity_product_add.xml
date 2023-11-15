@@ -9,7 +9,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical"
+        android:padding="40dp">
 
         <EditText
             android:id="@+id/productAddTitleET"
@@ -41,6 +43,7 @@
             android:id="@+id/productAddImageUrlET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:ems="10"
             android:hint="imageUrl"
             android:inputType="text"
