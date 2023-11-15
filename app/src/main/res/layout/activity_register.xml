@@ -13,6 +13,13 @@
         android:orientation="vertical"
         android:padding="80dp">
 
+        <ImageView
+            android:id="@+id/registerLogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
         <EditText
             android:id="@+id/registerDisplayNameET"
             android:layout_width="match_parent"
@@ -46,5 +53,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Register &amp; Login" />
+
+        <Button
+            android:id="@+id/registerBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

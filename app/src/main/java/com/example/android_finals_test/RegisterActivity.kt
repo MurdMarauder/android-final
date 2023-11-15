@@ -1,10 +1,13 @@
 package com.example.android_finals_test
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -13,6 +16,7 @@ import com.google.firebase.firestore.firestore
 class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private val userCollectionName = "users"
+    private val logoUrl = "https://firebasestorage.googleapis.com/v0/b/android-dev-final-b7273.appspot.com/o/logo.jpg?alt=media&token=1c34d817-65f5-41e9-9893-978fd3859726"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -23,6 +27,16 @@ class RegisterActivity : AppCompatActivity() {
         val emailET = findViewById<EditText>(R.id.registerEmailET)
         val passwordET = findViewById<EditText>(R.id.registerPasswordET)
         val displayNameET = findViewById<EditText>(R.id.registerDisplayNameET)
+        val registerLogo = findViewById<ImageView>(R.id.registerLogo)
+        val registerBack = findViewById<Button>(R.id.registerBack)
+
+        Glide.with(this).load(logoUrl).into(registerLogo)
+
+        registerBack.setOnClickListener {
+            finish()
+            val loginActivity = Intent(this, LoginActivity::class.java)
+            startActivity(loginActivity)
+        }
 
         registerAndLoginButton.setOnClickListener {
             val email = emailET.text.toString()
