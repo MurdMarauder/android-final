@@ -19,8 +19,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_marginBottom="30dp"
+                android:gravity="start"
+                android:orientation="horizontal"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp">
 
                 <Button
                     android:id="@+id/mainAddButton"
@@ -31,10 +34,10 @@
 
                 <ImageView
                     android:id="@+id/mainLogo"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_weight="1"
-                    tools:srcCompat="@tools:sample/avatars"/>
+                    tools:srcCompat="@tools:sample/avatars" />
 
                 <Button
                     android:id="@+id/mainLogoutButton"

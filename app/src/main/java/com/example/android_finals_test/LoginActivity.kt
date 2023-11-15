@@ -6,12 +6,15 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 
 class LoginActivity : AppCompatActivity() {
+    private val logoUrl = "https://firebasestorage.googleapis.com/v0/b/android-dev-final-b7273.appspot.com/o/logo.jpg?alt=media&token=1c34d817-65f5-41e9-9893-978fd3859726"
 
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +27,8 @@ class LoginActivity : AppCompatActivity() {
         val passwordET = findViewById<EditText>(R.id.loginPasswordET)
         val loginButton = findViewById<Button>(R.id.loginButton)
         val registerButton = findViewById<Button>(R.id.registerButton)
+        val loginLogo = findViewById<ImageView>(R.id.loginLogo)
+        Glide.with(this).load(logoUrl).into(loginLogo)
 
         loginButton.setOnClickListener {
             val email = emailET.text.toString()

@@ -26,6 +26,13 @@ class ProductAddActivity : AppCompatActivity() {
         val imageUrlET = findViewById<EditText>(R.id.productAddImageUrlET)
         val addProductButton = findViewById<Button>(R.id.productAddButton)
         val db = Firebase.firestore
+        val addBack = findViewById<Button>(R.id.addBack)
+
+        addBack.setOnClickListener {
+            finish()
+            val mainActivity = Intent(this, MainActivity::class.java)
+            startActivity(mainActivity)
+        }
 
         addProductButton.setOnClickListener {
             val title = titleET.text.toString()

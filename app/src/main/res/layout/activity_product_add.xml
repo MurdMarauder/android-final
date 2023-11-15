@@ -51,5 +51,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Product" />
+
+        <Button
+            android:id="@+id/addBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
