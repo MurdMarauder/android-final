@@ -14,9 +14,9 @@ class ProductViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_product_view)
 
         val thisIntent: Intent = intent
-        val title: String = thisIntent.getStringExtra("title").toString()
+        val title: String = thisIntent.getStringExtra("name").toString()
         val description: String = thisIntent.getStringExtra("description").toString()
-        val imageUrl: String = thisIntent.getStringExtra("imageUrl").toString()
+        val imageUrl: String = thisIntent.getStringExtra("photoUrl").toString()
         val price: String = thisIntent.getStringExtra("price").toString()
 
         val viewProductImage = findViewById<ImageView>(R.id.viewProductImage)

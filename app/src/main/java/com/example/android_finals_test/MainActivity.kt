@@ -23,7 +23,8 @@ import com.google.firebase.firestore.firestore
 
 
 class MainActivity : AppCompatActivity() {
-    private val menuCollectionName = "collection-1"
+    private val menuCollectionName = "items"
+    private val logoUrl = "https://firebasestorage.googleapis.com/v0/b/android-dev-final-b7273.appspot.com/o/logo.jpg?alt=media&token=1c34d817-65f5-41e9-9893-978fd3859726"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         val linearL = findViewById<LinearLayout>(R.id.linear)
         val logoutButton = findViewById<Button>(R.id.mainLogoutButton)
         val addButton = findViewById<Button>(R.id.mainAddButton)
+        val mainLogo = findViewById<ImageView>(R.id.mainLogo)
+        Glide.with(this).load(logoUrl).into(mainLogo)
 
         logoutButton.setOnClickListener {
             Firebase.auth.signOut()
@@ -49,9 +52,9 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener { result ->
                 for (document in result) {
                     val description = document.data["description"].toString()
-                    val imageUrl = document.data["imageUrl"].toString()
+                    val imageUrl = document.data["photoUrl"].toString()
                     val price = document.data["price"].toString()
-                    val title = document.data["title"].toString()
+                    val title = document.data["name"].toString()
 
 
                     val cardV = CardView(this)
@@ -147,8 +150,8 @@ class MainActivity : AppCompatActivity() {
 
                     viewBtnTv.setOnClickListener {
                         val productViewActivity = Intent(this, ProductViewActivity::class.java)
-                        productViewActivity.putExtra("imageUrl", imageUrl)
-                        productViewActivity.putExtra("title", title)
+                        productViewActivity.putExtra("photoUrl", imageUrl)
+                        productViewActivity.putExtra("name", title)
                         productViewActivity.putExtra("description", description)
                         productViewActivity.putExtra("price", price)
                         startActivity(productViewActivity)

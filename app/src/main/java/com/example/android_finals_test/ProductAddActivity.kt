@@ -1,16 +1,21 @@
 package com.example.android_finals_test
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import java.time.Instant
+import java.time.format.DateTimeFormatter
 
 class ProductAddActivity : AppCompatActivity() {
-    private val menuCollectionName = "collection-1"
+    private val menuCollectionName = "items"
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_add)
@@ -30,10 +35,11 @@ class ProductAddActivity : AppCompatActivity() {
 
             if (title != "" && description != "" && price != "" && imageUrl != ""){
                 val data = hashMapOf(
-                    "title" to title,
+                    "name" to title,
                     "description" to description,
                     "price" to price,
-                    "imageUrl" to imageUrl
+                    "photoUrl" to imageUrl,
+                    "dateCreated" to DateTimeFormatter.ISO_INSTANT.format(Instant.now())
                 )
 
                 db.collection(menuCollectionName).document()

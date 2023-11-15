@@ -12,7 +12,7 @@ import com.google.firebase.firestore.firestore
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-    private val userCollectionName = "user-sample"
+    private val userCollectionName = "users"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -35,7 +35,7 @@ class RegisterActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             val userId = auth.currentUser?.uid
                             val data = hashMapOf(
-                                "userId" to userId,
+                                "email" to email,
                                 "displayName" to displayName,
                             )
 
