@@ -53,7 +53,8 @@ class MainActivity : AppCompatActivity() {
                 for (document in result) {
                     val description = document.data["description"].toString()
                     val imageUrl = document.data["photoUrl"].toString()
-                    val price = document.data["price"].toString()
+                    val priceTemp = document.data["price"].toString()
+                    val price = String.format("Php. %.2f", priceTemp.toFloat())
                     val title = document.data["name"].toString()
 
 
@@ -131,7 +132,7 @@ class MainActivity : AppCompatActivity() {
                     )
                     priceTv.layoutParams = priceTvParams
 
-                    priceTv.text = "Php. " + (price)
+                    priceTv.text = price
                     priceTv.textSize = 18F
                     priceTv.textAlignment = TextView.TEXT_ALIGNMENT_TEXT_START
                     priceTv.setTypeface(null, Typeface.BOLD)
@@ -153,7 +154,7 @@ class MainActivity : AppCompatActivity() {
                         productViewActivity.putExtra("photoUrl", imageUrl)
                         productViewActivity.putExtra("name", title)
                         productViewActivity.putExtra("description", description)
-                        productViewActivity.putExtra("price", "Php. " + price)
+                        productViewActivity.putExtra("price", price)
                         startActivity(productViewActivity)
                     }
 

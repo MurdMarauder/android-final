@@ -27,6 +27,7 @@ class RegisterActivity : AppCompatActivity() {
         val emailET = findViewById<EditText>(R.id.registerEmailET)
         val passwordET = findViewById<EditText>(R.id.registerPasswordET)
         val displayNameET = findViewById<EditText>(R.id.registerDisplayNameET)
+        val photoUrlET = findViewById<EditText>(R.id.registerPhotoUrlET)
         val registerLogo = findViewById<ImageView>(R.id.registerLogo)
         val registerBack = findViewById<Button>(R.id.registerBack)
 
@@ -42,15 +43,16 @@ class RegisterActivity : AppCompatActivity() {
             val email = emailET.text.toString()
             val password = passwordET.text.toString()
             val displayName = displayNameET.text.toString()
+            val photoUrl = photoUrlET.text.toString()
 
             if (email != "" && password != "" && displayName != ""){
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            val userId = auth.currentUser?.uid
                             val data = hashMapOf(
                                 "email" to email,
                                 "displayName" to displayName,
+                                "photoUrl" to photoUrl
                             )
 
                             db.collection(userCollectionName).document()

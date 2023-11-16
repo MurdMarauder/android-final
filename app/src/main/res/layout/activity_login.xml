@@ -43,13 +43,17 @@
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login" />
+            android:backgroundTint="#5A5A5A"
+            android:text="Login"
+            app:cornerRadius="5dp" />
 
         <Button
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register" />
+            android:backgroundTint="#5A5A5A"
+            android:text="Register"
+            app:cornerRadius="5dp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

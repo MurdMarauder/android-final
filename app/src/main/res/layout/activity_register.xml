@@ -30,6 +30,15 @@
             android:minHeight="48dp" />
 
         <EditText
+            android:id="@+id/registerPhotoUrlET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Photo Url"
+            android:inputType="text"
+            android:minHeight="48dp" />
+
+        <EditText
             android:id="@+id/registerEmailET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,12 +61,16 @@
             android:id="@+id/registerAndLoginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register &amp; Login" />
+            android:backgroundTint="#5A5A5A"
+            android:text="Register &amp; Login"
+            app:cornerRadius="5dp" />
 
         <Button
             android:id="@+id/registerBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Back" />
+            android:backgroundTint="#5A5A5A"
+            android:text="Back"
+            app:cornerRadius="5dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

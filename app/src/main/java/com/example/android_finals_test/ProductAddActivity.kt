@@ -1,17 +1,20 @@
 package com.example.android_finals_test
 
+import android.app.ActionBar
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.firebase.Firebase
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.firestore
-import java.time.Instant
-import java.time.format.DateTimeFormatter
+import java.util.Date
 
 class ProductAddActivity : AppCompatActivity() {
     private val menuCollectionName = "items"
@@ -35,18 +38,20 @@ class ProductAddActivity : AppCompatActivity() {
         }
 
         addProductButton.setOnClickListener {
-            val title = titleET.text.toString()
+            val name = titleET.text.toString()
             val description = descriptionET.text.toString()
             val price = priceET.text.toString()
-            val imageUrl = imageUrlET.text.toString()
+            val photoUrl = imageUrlET.text.toString()
 
-            if (title != "" && description != "" && price != "" && imageUrl != ""){
+            if (name != "" && description != "" && price != "" && photoUrl != ""){
+                val priceDouble = String.format("%.2f", price.toDouble()).toDouble()
+
                 val data = hashMapOf(
-                    "name" to title,
+                    "name" to name,
                     "description" to description,
-                    "price" to price,
-                    "photoUrl" to imageUrl,
-                    "dateCreated" to DateTimeFormatter.ISO_INSTANT.format(Instant.now())
+                    "price" to priceDouble,
+                    "photoUrl" to photoUrl,
+                    "dateCreated" to Timestamp(Date())
                 )
 
                 db.collection(menuCollectionName).document()
